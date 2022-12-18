@@ -1,0 +1,23 @@
+{
+  "name": "simple-sliders-js",
+  "version": "1.0.0",
+  "description": "This is simple slider js package for creating slider quickly ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/amitkumar3211/slider-library.git"
+  },
+  "keywords": [
+    "simple",
+    "slider"
+  ],
+  "author": "Amit Kumar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/amitkumar3211/slider-library/issues"
+  },
+  "homepage": "https://github.com/amitkumar3211/slider-library#readme"
+}
