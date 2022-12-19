@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="slides">
+        <div><img src="./slide1.jpg" class="" width="30%" height="50%"></div>
+        <div><img src="./slide2.png" class="" width="30%" height="50%"></div>
+        <div><img src="./slide1.jpg" class="" width="30%" height="50%"></div>
+        <div><img src="./slide3.jpg" class="" width="30%" height="50%"></div>
+        <div><img src="./slide2.png" class="" width="30%" height="50%"></div>
+    </div>
+
+
+    <style>
+        body {
+            background: black;
+        }
+
+        .active {
+            display: block !important;
+            left: -600px;
+            width: 600px;
+            height: 370px;
+            -webkit-animation: slide 0.5s forwards;
+            -webkit-animation-delay: 2s;
+            animation: slide 0.5s forwards;
+            animation-delay: 2s;
+
+        }
+
+
+
+        #slides {
+            display: flex;
+            height: 100%;
+            width: 50%;
+            position: absolute;
+
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        .sliders {
+
+            display: none;
+        }
+
+        .dot-tags {
+
+            border-radius: 8px;
+            height: 8px;
+            margin: 0 4px;
+            width: 8px;
+            background: white;
+
+        }
+
+        .dots {
+            display: flex;
+            bottom: 0;
+            position: inherit;
+        }
+    </style>
+
+
+    <script>
+        var sliderSimple = document.getElementById('slides');
+        for (var i = 0; i < sliderSimple.children.length; i++) {
+            if (i == 0) {
+                sliderSimple.children[i].setAttribute('class', 'simple-slider sliders active');
+            } else {
+
+                sliderSimple.children[i].setAttribute('class', 'simple-slider sliders');
+            }
+
+            console.log(sliderSimple.children[i]);
+
+        }
+        // creating dots in slider 
+        dots();
+
+
+        allOptions('', 'true');
+
+        function cureentSlide() {
+
+
+        }
+
+        function prevSlide() {
+            var currentSlide = document.querySelector('.active');
+            currentSlide.setAttribute('class', 'simple-slider sliders');
+
+            if (currentSlide.previousElementSibling !== null) {
+
+                currentSlide.previousElementSibling.setAttribute('class', 'simple-slider sliders active');
+
+            } else {
+
+                slides = document.getElementById('slides');
+                sLength = slides.children.length - 1;
+                slides.children[sLength].setAttribute('class', 'simple-slider sliders active');
+
+            }
+
+        }
+
+        function nextSlider() {
+
+            var elmt = document.querySelector('.active');
+            elmt.setAttribute('class', 'simple-slider sliders');
+            elementCheck = elmt.nextElementSibling.classList.contains('sliders');
+            if (elmt.nextElementSibling !== null && elementCheck) {
+
+                elmt.nextElementSibling.setAttribute('class', 'simple-slider sliders active');
+
+            } else {
+
+                document.getElementById('slides').children[0].setAttribute('class', 'simple-slider sliders active');
+
+            }
+
+        }
+
+
+
+        function dots() {
+            slide = document.getElementById('slides');
+            dotOuterDiv = document.createElement("div");
+            dotOuterDiv.setAttribute('class', 'dots');
+            // loop for creating multipule dots 
+            for (var i = 0; i < slide.children.length; i++) {
+
+
+                Dots = document.createElement('a');
+                Dots.setAttribute('class', 'dot-tags');
+
+                // chanage dots color automatically according to body color
+
+                // color =  window.getComputedStyle(document.body, null).getPropertyValue('background-color');
+                // if(color = 'rgba(0, 0, 0, 0)'){
+                //         Dots.setAttribute('style','background:black')
+                //     }
+
+                dotOuterDiv.appendChild(Dots);
+
+            }
+
+            slide.appendChild(dotOuterDiv);
+
+
+        }
+
+
+        function slideBtns() {
+
+            btnDiv = document.createElement('div');
+
+        }
+
+        function allOptions(dots, arrows) {
+
+            nextPrevBtns();
+
+        }
+
+        function nextPrevBtns() {
+
+            btnDivs = document.createElement('div');
+
+            nextbtn = document.createElement('a');
+            nextbtn.setAttribute('class', 'Slider-next next');
+
+            btnDivs.appendChild(nextbtn);
+            prevBtn = document.createElement('a');
+
+            prevBtn.setAttribute('class', 'slider-prev prev');
+
+            btnDivs.appendChild(prevBtn);
+
+            Div = document.getElementById('slides');
+            Div.appendChild(btnDivs);
+
+        }
+
+
+        next = document.querySelector('.next');
+
+        next.addEventListener('click', function(){
+
+            nextSlider();
+        });
+
+        prev = document.querySelector('.prev');
+        prev.addEventListener('click', function(){
+
+            prevSlide();
+        });
+
+
+
+        setInterval(function () {
+            nextSlider();
+        }, 4000);
+
+
+
+    </script>
+</body>
+
+</html>

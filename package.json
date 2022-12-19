@@ -1,6 +1,6 @@
 {
   "name": "simple-sliders-js",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "This is simple slider js package for creating slider quickly ",
   "main": "index.js",
   "scripts": {
